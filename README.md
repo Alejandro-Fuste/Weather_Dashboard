@@ -6,17 +6,29 @@ The purpose of this homework is to create a weather dashboard using the data fro
 
 Requirements-
 
-Current Day and Date displayed at the top of planner
-Timeblocks for standard business hours
-Timeblocks are colored to indicate whether the event is in past, present, or future.
-Able to enter events in each timeblock
-The event is saved into local storage when the save button is clicked.
-The event stays in timeblock when page is refreshed
-User Story
-=========
+1. Dashboard must have a form inputs 
+2. Able to search for the weather of a city 
+3. Able to see the current and future conditions for searched city 
+4. Able to see:
+  a. city name
+  b. date
+  c. icon for weather condition
+  d. temperature
+  e. humidity
+  f. wind speed
+  g. UV index
+5. Color to represent UV index
+6. Able to view the 5-day forecast of city with the date, <br>
+   an icon representation of weather conditions, the temperature, <br>
+   and the humidity
+7. Able to view the current and future conditions of city search history
+
+
+## User Story
+=============
 
 AS A traveler <br>
 I WANT to see the weather outlook for multiple cities <br>
 SO THAT I can plan a trip accordingly <br>
 
-=========
+=============
