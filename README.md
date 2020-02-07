@@ -1,6 +1,7 @@
 # Weather_Dashboard
 
 Homework #6: Server-Side APIs: Weather Dashboard
+<hr>
 
 The purpose of this homework is to create a weather dashboard using the data from a another API.
 
@@ -11,13 +12,13 @@ Requirements-
 3. Able to see the current and future conditions for searched city 
 4. Able to see:
 <ol>
-  a. city name
-  b. date
-  c. icon for weather condition
-  d. temperature
-  e. humidity
-  f. wind speed
-  g. UV index
+  a. city name <br>
+  b. date <br>
+  c. icon for weather condition <br>
+  d. temperature <br>
+  e. humidity <br>
+  f. wind speed <br>
+  g. UV index <br>
 </ol>
 5. Color to represent UV index
 6. Able to view the 5-day forecast of city with the date, <br>
