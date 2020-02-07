@@ -10,6 +10,7 @@ Requirements-
 2. Able to search for the weather of a city 
 3. Able to see the current and future conditions for searched city 
 4. Able to see:
+<ol>
   a. city name
   b. date
   c. icon for weather condition
@@ -17,6 +18,7 @@ Requirements-
   e. humidity
   f. wind speed
   g. UV index
+</ol>
 5. Color to represent UV index
 6. Able to view the 5-day forecast of city with the date, <br>
    an icon representation of weather conditions, the temperature, <br>
