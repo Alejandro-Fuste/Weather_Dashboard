@@ -18,3 +18,13 @@ header h1 {
 	padding: 10px;
 	text-align: center;
 }
+
+/* body */
+
+div .col-sm-4 {
+	background-color: #f4f4f4;
+}
+
+div .col-sm-8 {
+	background-color: blue;
+}
