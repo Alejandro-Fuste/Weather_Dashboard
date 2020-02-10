@@ -1,28 +1,65 @@
-// Create event listener for button click
+$(document).ready(function() {
+	var city = '';
+	var key = '';
+	var counter = -1;
+	var apiKey = '476789b4ea7a5f8db7a7b4f6f0c734fb';
 
-// Get text value from input field and store in global variable
+	// Create event listener for button click
 
-// Store text value in local storage
+	$('#searchBtn').on('click', function(e) {
+		e.preventDefault();
 
-// Get text value from local storage
+		// Increase counter with every click
+		counter++;
 
-// Create click events for past searches
+		// Get text value from input field and store in global variable
 
-// Prepend text value into div for past searches
+		city = $('#input').val().trim();
 
-// Create query URL with text value from global variable and imperial value
+		// Create key for local storage -- use counter as part of key
 
-// Create ajax call
+		key = 'city-' + counter;
 
-// Console log response
+		// Store text value in local storage
 
-// Get temperature, humidity, wind speed, uv index info from respone
+		localStorage.setItem(key, city);
 
-// Get city, date, and icon to represent current weather condition
+		console.log({ city, key });
 
-/* Dynamically input city, date, icon, temp, humidity, wind speed, 
+		addCity();
+	});
+
+	// Get text value from local storage
+
+	function addCity() {
+		for (i = 0; i < localStorage.length; i++) {
+			var cityPrepend = $('<div></div>');
+			var cityP = $('<p></p>').attr('class', 'pastSearch').val(localStorage.getItem(localStorage.key(i)));
+			cityPrepend.append(cityP);
+			// Prepend text value into div for past searches
+			console.log(localStorage.length);
+			console.log(localStorage.key(i));
+			console.log(cityP);
+			$('#searches').prepend(cityPrepend);
+		}
+	}
+
+	// Create click events for past searches
+
+	// Create query URL with text value from global variable and imperial value
+
+	// Create ajax call
+
+	// Console log response
+
+	// Get temperature, humidity, wind speed, uv index info from respone
+
+	// Get city, date, and icon to represent current weather condition
+
+	/* Dynamically input city, date, icon, temp, humidity, wind speed, 
 and uv index into city div */
 
-// Color code uv index
+	// Color code uv index
 
-// create 5-day forecast card with date, weather condition icon, temp, humidity
+	// create 5-day forecast card with date, weather condition icon, temp, humidity
+});
