@@ -25,15 +25,23 @@ header h1 {
 
 /* body */
 
+/* aside */
 div .col-sm-4 {
 	background-color: #f4f4f4;
-	height: 100%;
-}
-
-div .col-sm-8 {
-	background-color: blue;
+	height: 80vh;
 }
 
 form {
 	padding: 10px 0px 10px 10px;
+}
+
+p .pastSearch {
+	color: black;
+	font-size: 16px;
+}
+
+/* ================== */
+
+div .col-sm-8 {
+	background-color: blue;
 }

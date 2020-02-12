@@ -3,6 +3,9 @@ $(document).ready(function() {
 	var key = '';
 	var counter = -1;
 	var apiKey = '476789b4ea7a5f8db7a7b4f6f0c734fb';
+	var searchDiv = $('#searches');
+	var aside = $('.col-sm-4');
+	console.log(aside);
 
 	// Create event listener for button click
 
@@ -24,35 +27,64 @@ $(document).ready(function() {
 
 		localStorage.setItem(key, city);
 
-		console.log({ city, key });
-
 		addCity();
+
+		// Put city variable in queryURL and send ajax request
+
+		var queryURL = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&q=' + city + '&appid=' + apiKey;
+
+		$.ajax({
+			url: queryURL,
+			method: 'GET'
+		}).then(function(res) {
+			// Console log response
+
+			console.log(res);
+		});
 	});
 
 	// Get text value from local storage
+	addCity();
 
 	function addCity() {
+		searchDiv.empty();
+
 		for (i = 0; i < localStorage.length; i++) {
-			var cityPrepend = $('<div></div>');
-			var cityP = $('<p></p>').attr('class', 'pastSearch').val(localStorage.getItem(localStorage.key(i)));
-			cityPrepend.append(cityP);
+			var cityValue = localStorage.getItem('city-' + i);
+			var cityDiv = $('<div></div>');
+			var cityP = $('<p></p>').attr('class', 'pastSearch').text(cityValue);
+			cityDiv.append(cityP);
 			// Prepend text value into div for past searches
-			console.log(localStorage.length);
-			console.log(localStorage.key(i));
-			console.log(cityP);
-			$('#searches').prepend(cityPrepend);
+			searchDiv.prepend(cityDiv);
+			aside.append(searchDiv);
 		}
 	}
 
 	// Create click events for past searches
 
-	// Create query URL with text value from global variable and imperial value
+	$('.pastSearch').on('click', function(e) {
+		e.preventDefault();
 
-	// Create ajax call
+		var pcity = $(this).text().trim();
 
-	// Console log response
+		// Create query URL with text value from global variable and imperial value
 
-	// Get temperature, humidity, wind speed, uv index info from respone
+		var queryURL = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&q=' + pcity + '&appid=' + apiKey;
+
+		// Create ajax call
+
+		$.ajax({
+			url: queryURL,
+			method: 'GET'
+		}).then(function(res) {
+			// Console log response
+
+			console.log(res);
+			console.log(res.weather);
+		});
+	});
+
+	// Get temperature, humidity, wind speed, uv index info from response
 
 	// Get city, date, and icon to represent current weather condition
 
