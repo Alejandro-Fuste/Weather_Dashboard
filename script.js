@@ -89,9 +89,11 @@ $(document).ready(function() {
 		});
 
 		// 5-day call
+		var queryURL2 =
+			'https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=' + city + '&appid=' + apiKey;
 
 		$.ajax({
-			url: queryURL,
+			url: queryURL2,
 			method: 'GET'
 		}).then(function(resp) {
 			// Console log response
@@ -122,7 +124,7 @@ $(document).ready(function() {
 
 				var cardHum = $('<p>').text('Humidity: ' + humFor + ' %');
 
-				cardBody.append(cardDate, cardIcon, cardTemp, cardHum);
+				cardBody.append(cardIcon, cardTemp, cardHum);
 
 				card.append(cardBody);
 
@@ -140,8 +142,8 @@ $(document).ready(function() {
 
 		for (i = 0; i < localStorage.length; i++) {
 			var cityValue = localStorage.getItem('city-' + i);
-			var cityDiv = $('<div></div>');
-			var cityP = $('<p></p>').attr('class', 'pastSearch').text(cityValue);
+			var cityDiv = $('<div>');
+			var cityP = $('<p>').attr('class', 'pastSearch').text(cityValue);
 			cityDiv.prepend(cityP);
 			// Prepend text value into div for past searches
 			searchDiv.prepend(cityDiv);
@@ -151,7 +153,7 @@ $(document).ready(function() {
 
 	// Create click events for past searches
 
-	$('.pastSearch').on('click', function(e) {
+	$(document).on('click', '.pastSearch', function(e) {
 		e.preventDefault();
 		currentDiv.empty();
 		fiveDayDiv.empty();
