@@ -42,6 +42,34 @@ p .pastSearch {
 
 /* ================== */
 
+/* Main */
+
 div .col-sm-8 {
 	background-color: blue;
+}
+
+div #firstRow {
+	width: 100%;
+	/* white-space: pre-wrap; */
+	display: flex;
+}
+
+div #secondRow {
+	margin: 5px 0 10px 10px;
+}
+
+h3 {
+	width: auto;
+	padding: 10px 10px 0 10px;
+}
+
+#secondRow p {
+	padding-bottom: 10px;
+	font-size: 20px;
+}
+
+div .rows {
+	display: block;
+	padding-top: 20px;
+	padding-right: 20px;
 }
