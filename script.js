@@ -11,6 +11,8 @@ $(document).ready(function() {
 
 	$('#searchBtn').on('click', function(e) {
 		e.preventDefault();
+		currentDiv.empty();
+		fiveDayDiv.empty();
 
 		// Increase counter with every click
 		counter++;
@@ -33,6 +35,7 @@ $(document).ready(function() {
 
 		var queryURL = 'https://api.openweathermap.org/data/2.5/weather?units=imperial&q=' + city + '&appid=' + apiKey;
 
+		// Current weather call
 		$.ajax({
 			url: queryURL,
 			method: 'GET'
@@ -40,6 +43,92 @@ $(document).ready(function() {
 			// Console log response
 
 			console.log(res);
+
+			let cityV = res.name;
+			let date = res.dt;
+			// let dateString = date.toUTCString();
+			// console.log(dateString);
+
+			// Get temperature, humidity, wind speed, uv index info from response
+			let temp = res.main.temp;
+			let hum = res.main.humidity;
+			let windSp = res.wind.speed;
+			// let uv = res.
+			let weatherIcon = res.weather[0].icon;
+			var icon = '';
+
+			// console.log(cityV, date, temp, hum, windSp, weatherIcon);
+
+			/* Dynamically input city, date, icon, temp, humidity, wind speed, 
+			and uv index into city div */
+
+			var firstDiv = $('<div>').attr('id', 'firstRow');
+			var inputCity = $('<h3>').text(cityV);
+			var dateEl = $('<h3>').text('date');
+			var wIcon = $('<p>').text(weatherIcon);
+			var firstRow = firstDiv.append(inputCity, dateEl, wIcon);
+
+			var secondDiv = $('<div>').attr('id', 'secondRow');
+			var tempDiv = $('<p>').text('Temperature: ' + temp + ' °F');
+
+			var thirdDiv = $('<div>').addClass('rows');
+			var humDiv = $('<p>').text('Humidity: ' + hum + ' %');
+			// var thirdRow = thirdDiv.append(humDiv);
+
+			var fourthDiv = $('<div>').addClass('rows');
+			var windSpeed = $('<p>').text('Wind Speed: ' + windSp + ' MPH');
+			// var fourthRow = fourthDiv.append(windSpeed);
+
+			var fifthDiv = $('<div>').addClass('rows');
+			var uvIndex = $('<span><p></p></span>').text('UV Index: ' + 'object w/ temp');
+			// var fifthRow = fifthDiv.append(uvIndex);
+
+			var secondRow = secondDiv.append(tempDiv, humDiv, windSpeed, uvIndex);
+
+			currentDiv.append(firstRow, secondRow);
+		});
+
+		// 5-day call
+
+		$.ajax({
+			url: queryURL,
+			method: 'GET'
+		}).then(function(resp) {
+			// Console log response
+
+			console.log(resp);
+
+			// create 5-day forecast card with date, weather condition icon, temp, humidity
+			for (i = 0; i < 5; i++) {
+				// let myDate = new Date(Date.now(resp.list[i].dt));
+				// let year = myDate.getFullYear();
+				// let day = myDate.getMonth() + 1;
+				// let month = myDate.getMonth();
+				// let formDate = month + '/' + day + '/' + year;
+
+				var iconFor = resp.list[i].weather.icon;
+				var tempFor = resp.list[i].main.temp;
+				var humFor = resp.list[i].main.humidity;
+
+				var card = $('<div>').addClass('card').attr('style', 'width: 10rem;');
+
+				var cardBody = $('<div>').addClass('card-body');
+
+				// var cardDate = $('<h6>').text(formDate);
+
+				var cardIcon = $('<h6>').text(iconFor);
+
+				var cardTemp = $('<p>').text('Temp: ' + tempFor + ' °F');
+
+				var cardHum = $('<p>').text('Humidity: ' + humFor + ' %');
+
+				cardBody.append(cardDate, cardIcon, cardTemp, cardHum);
+
+				card.append(cardBody);
+
+				fiveDayDiv.append(card);
+				// console.log(dateFor, iconFor, tempFor, humFor);
+			}
 		});
 	});
 
@@ -53,7 +142,7 @@ $(document).ready(function() {
 			var cityValue = localStorage.getItem('city-' + i);
 			var cityDiv = $('<div></div>');
 			var cityP = $('<p></p>').attr('class', 'pastSearch').text(cityValue);
-			cityDiv.append(cityP);
+			cityDiv.prepend(cityP);
 			// Prepend text value into div for past searches
 			searchDiv.prepend(cityDiv);
 			aside.append(searchDiv);
@@ -64,6 +153,8 @@ $(document).ready(function() {
 
 	$('.pastSearch').on('click', function(e) {
 		e.preventDefault();
+		currentDiv.empty();
+		fiveDayDiv.empty();
 
 		var pcity = $(this).text().trim();
 
@@ -141,18 +232,50 @@ $(document).ready(function() {
 
 			console.log(resp);
 
-			for (i = 0; i < 6; i++) {
-				var dateFor = resp.list[i].dt;
+			console.log(Date.now(resp.list[0].dt));
+
+			var dateFo = resp.list[0].dt;
+			let myDate = new Date(Date.now(resp.list[0].dt));
+			let year = myDate.getFullYear();
+			let day = myDate.getMonth() + 1;
+			let month = myDate.getMonth();
+			let formDate = month + '/' + day + '/' + year;
+
+			console.log(formDate);
+
+			// create 5-day forecast card with date, weather condition icon, temp, humidity
+			for (i = 0; i < 5; i++) {
+				let myDate = new Date(Date.now(resp.list[i].dt));
+				let year = myDate.getFullYear();
+				let day = myDate.getMonth() + 1;
+				let month = myDate.getMonth();
+				let formDate = month + '/' + day + '/' + year;
+
 				var iconFor = resp.list[i].weather.icon;
 				var tempFor = resp.list[i].main.temp;
 				var humFor = resp.list[i].main.humidity;
 
-				console.log(dateFor, iconFor, tempFor, humFor);
+				var card = $('<div>').addClass('card').attr('style', 'width: 10rem;');
+
+				var cardBody = $('<div>').addClass('card-body');
+
+				var cardDate = $('<h6>').text(formDate);
+
+				var cardIcon = $('<h6>').text(iconFor);
+
+				var cardTemp = $('<p>').text('Temp: ' + tempFor + ' °F');
+
+				var cardHum = $('<p>').text('Humidity: ' + humFor + ' %');
+
+				cardBody.append(cardDate, cardIcon, cardTemp, cardHum);
+
+				card.append(cardBody);
+
+				fiveDayDiv.append(card);
+				// console.log(dateFor, iconFor, tempFor, humFor);
 			}
 		});
 	});
 
 	// Color code uv index
-
-	// create 5-day forecast card with date, weather condition icon, temp, humidity
 });

@@ -28,7 +28,7 @@ header h1 {
 /* aside */
 div .col-sm-4 {
 	background-color: #f4f4f4;
-	height: 80vh;
+	height: 100vh;
 }
 
 form {
@@ -42,10 +42,11 @@ p .pastSearch {
 
 /* ================== */
 
-/* Main */
+/* Main current weather */
 
 div .col-sm-8 {
 	background-color: blue;
+	height: 100vh;
 }
 
 div #firstRow {
@@ -72,4 +73,17 @@ div .rows {
 	display: block;
 	padding-top: 20px;
 	padding-right: 20px;
+}
+
+/* ================== */
+
+/* Main five day  */
+
+#forecastDiv {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.card {
+	margin: 5px;
 }
