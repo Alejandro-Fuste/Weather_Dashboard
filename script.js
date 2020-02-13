@@ -55,7 +55,6 @@ $(document).ready(function() {
 			let windSp = res.wind.speed;
 			// let uv = res.
 			let weatherIcon = res.weather[0].icon;
-			var icon = '';
 
 			// console.log(cityV, date, temp, hum, windSp, weatherIcon);
 
@@ -107,8 +106,9 @@ $(document).ready(function() {
 				// let day = myDate.getMonth() + 1;
 				// let month = myDate.getMonth();
 				// let formDate = month + '/' + day + '/' + year;
-
-				var iconFor = resp.list[i].weather.icon;
+				// "https://openweathermap.org/img/wn/"+data.list[i].weather[0].icon+".png"
+				var iconFor = 'https://openweathermap.org/img/wn/' + resp.list[i].weather[0].icon + '.png';
+				console.log(iconFor);
 				var tempFor = resp.list[i].main.temp;
 				var humFor = resp.list[i].main.humidity;
 
@@ -118,7 +118,7 @@ $(document).ready(function() {
 
 				// var cardDate = $('<h6>').text(formDate);
 
-				var cardIcon = $('<h6>').text(iconFor);
+				var cardIcon = $('<img>').attr('src', iconFor).attr('alt', 'weather icon');
 
 				var cardTemp = $('<p>').text('Temp: ' + tempFor + ' °F');
 
@@ -185,8 +185,7 @@ $(document).ready(function() {
 			let hum = res.main.humidity;
 			let windSp = res.wind.speed;
 			// let uv = res.
-			let weatherIcon = res.weather[0].icon;
-			var icon = '';
+			let weatherIcon = 'https://openweathermap.org/img/wn/' + res.list[i].weather[0].icon + '.png';
 
 			// console.log(cityV, date, temp, hum, windSp, weatherIcon);
 
@@ -253,7 +252,7 @@ $(document).ready(function() {
 				let month = myDate.getMonth();
 				let formDate = month + '/' + day + '/' + year;
 
-				var iconFor = resp.list[i].weather.icon;
+				var iconFor = 'https://openweathermap.org/img/wn/' + resp.list[i].weather[0].icon + '.png';
 				var tempFor = resp.list[i].main.temp;
 				var humFor = resp.list[i].main.humidity;
 
@@ -263,7 +262,7 @@ $(document).ready(function() {
 
 				var cardDate = $('<h6>').text(formDate);
 
-				var cardIcon = $('<h6>').text(iconFor);
+				var cardIcon = $('<img>').attr('src', iconFor).attr('alt', 'weather icon');
 
 				var cardTemp = $('<p>').text('Temp: ' + tempFor + ' °F');
 
