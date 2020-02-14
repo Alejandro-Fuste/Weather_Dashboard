@@ -9,7 +9,6 @@ $(document).ready(function() {
 	var fiveDayDiv = $('#forecastDiv');
 	let currentDate = moment().format('l');
 
-	console.log(currentDate);
 	// Create event listener for button click
 
 	$('#searchBtn').on('click', function(e) {
@@ -51,7 +50,6 @@ $(document).ready(function() {
 
 			let cityV = res.name;
 			let resDate = moment(res.dt * 1000).format('l');
-			console.log(resDate);
 			let temp = res.main.temp;
 			let hum = res.main.humidity;
 			let windSp = res.wind.speed;
@@ -100,11 +98,9 @@ $(document).ready(function() {
 			// Console log response
 
 			console.log(resp);
-
+			let m = moment();
 			// create 5-day forecast card with date, weather condition icon, temp, humidity
 			for (i = 0; i < 5; i++) {
-				// let myDate = new Date(Date.now(resp.list[i].dt));
-				let respDate = moment(resp.list[i].dt * 1000).format('l');
 				var iconFor = 'https://openweathermap.org/img/wn/' + resp.list[i].weather[0].icon + '.png';
 				var tempFor = resp.list[i].main.temp;
 				var humFor = resp.list[i].main.humidity;
@@ -113,7 +109,7 @@ $(document).ready(function() {
 
 				var cardBody = $('<div>').addClass('card-body');
 
-				var cardDate = $('<h6>').text(respDate);
+				var cardDate = $('<h6>').text(moment().add(i, 'd').format('l'));
 
 				var cardIcon = $('<img>').attr('src', iconFor).attr('alt', 'weather icon');
 
