@@ -7,6 +7,9 @@ $(document).ready(function() {
 	var aside = $('.col-sm-4');
 	var currentDiv = $('#weatherDiv');
 	var fiveDayDiv = $('#forecastDiv');
+	let currentDate = moment().format('l');
+
+	console.log(currentDate);
 	// Create event listener for button click
 
 	$('#searchBtn').on('click', function(e) {
@@ -44,17 +47,14 @@ $(document).ready(function() {
 
 			console.log(res);
 
-			let cityV = res.name;
-			let date = res.dt;
-			// let dateString = date.toUTCString();
-			// console.log(dateString);
-
 			// Get temperature, humidity, wind speed, uv index info from response
+
+			let cityV = res.name;
 			let temp = res.main.temp;
 			let hum = res.main.humidity;
 			let windSp = res.wind.speed;
 			// let uv = res.
-			let weatherIcon = res.weather[0].icon;
+			let weatherIcon = 'https://openweathermap.org/img/wn/' + res.weather[0].icon + '.png';
 
 			// console.log(cityV, date, temp, hum, windSp, weatherIcon);
 
@@ -63,8 +63,8 @@ $(document).ready(function() {
 
 			var firstDiv = $('<div>').attr('id', 'firstRow');
 			var inputCity = $('<h3>').text(cityV);
-			var dateEl = $('<h3>').text('date');
-			var wIcon = $('<p>').text(weatherIcon);
+			var dateEl = $('<h3>').text(currentDate);
+			var wIcon = $('<img>').attr('src', weatherIcon).attr('alt', 'weather icon');
 			var firstRow = firstDiv.append(inputCity, dateEl, wIcon);
 
 			var secondDiv = $('<div>').attr('id', 'secondRow');
@@ -108,7 +108,6 @@ $(document).ready(function() {
 				// let formDate = month + '/' + day + '/' + year;
 				// "https://openweathermap.org/img/wn/"+data.list[i].weather[0].icon+".png"
 				var iconFor = 'https://openweathermap.org/img/wn/' + resp.list[i].weather[0].icon + '.png';
-				console.log(iconFor);
 				var tempFor = resp.list[i].main.temp;
 				var humFor = resp.list[i].main.humidity;
 
@@ -172,7 +171,7 @@ $(document).ready(function() {
 		}).then(function(res) {
 			// Console log response
 
-			// console.log(res);
+			console.log(res);
 
 			// Get city, date, and icon to represent current weather condition
 			let cityV = res.name;
