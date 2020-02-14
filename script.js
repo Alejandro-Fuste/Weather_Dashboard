@@ -50,6 +50,8 @@ $(document).ready(function() {
 			// Get temperature, humidity, wind speed, uv index info from response
 
 			let cityV = res.name;
+			let resDate = moment(res.dt * 1000).format('l');
+			console.log(resDate);
 			let temp = res.main.temp;
 			let hum = res.main.humidity;
 			let windSp = res.wind.speed;
@@ -63,7 +65,7 @@ $(document).ready(function() {
 
 			var firstDiv = $('<div>').attr('id', 'firstRow');
 			var inputCity = $('<h3>').text(cityV);
-			var dateEl = $('<h3>').text(currentDate);
+			var dateEl = $('<h3>').text(resDate);
 			var wIcon = $('<img>').attr('src', weatherIcon).attr('alt', 'weather icon');
 			var firstRow = firstDiv.append(inputCity, dateEl, wIcon);
 
@@ -102,11 +104,7 @@ $(document).ready(function() {
 			// create 5-day forecast card with date, weather condition icon, temp, humidity
 			for (i = 0; i < 5; i++) {
 				// let myDate = new Date(Date.now(resp.list[i].dt));
-				// let year = myDate.getFullYear();
-				// let day = myDate.getMonth() + 1;
-				// let month = myDate.getMonth();
-				// let formDate = month + '/' + day + '/' + year;
-				// "https://openweathermap.org/img/wn/"+data.list[i].weather[0].icon+".png"
+				let respDate = moment(resp.list[i].dt * 1000).format('l');
 				var iconFor = 'https://openweathermap.org/img/wn/' + resp.list[i].weather[0].icon + '.png';
 				var tempFor = resp.list[i].main.temp;
 				var humFor = resp.list[i].main.humidity;
@@ -115,7 +113,7 @@ $(document).ready(function() {
 
 				var cardBody = $('<div>').addClass('card-body');
 
-				// var cardDate = $('<h6>').text(formDate);
+				var cardDate = $('<h6>').text(respDate);
 
 				var cardIcon = $('<img>').attr('src', iconFor).attr('alt', 'weather icon');
 
@@ -123,7 +121,7 @@ $(document).ready(function() {
 
 				var cardHum = $('<p>').text('Humidity: ' + humFor + ' %');
 
-				cardBody.append(cardIcon, cardTemp, cardHum);
+				cardBody.append(cardDate, cardIcon, cardTemp, cardHum);
 
 				card.append(cardBody);
 
