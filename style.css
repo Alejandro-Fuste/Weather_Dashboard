@@ -35,9 +35,14 @@ form {
 	padding: 10px 0px 10px 10px;
 }
 
-p .pastSearch {
-	color: black;
-	font-size: 16px;
+.pastSearch {
+	border-radius: 5px;
+	border: 1px solid rgb(238, 233, 233);
+	color: rgb(100, 98, 98);
+	font-size: 20px;
+	background-color: white;
+	padding: 10px;
+	margin: 0px;
 }
 
 /* ================== */
@@ -45,13 +50,22 @@ p .pastSearch {
 /* Main current weather */
 
 div .col-sm-8 {
-	background-color: blue;
+	/* background-color: blue; */
 	height: 100vh;
+}
+
+#weatherDiv {
+	border-radius: 5px;
+	border: 1px solid rgb(238, 233, 233);
+	margin: 8px 0px 8px 10px;
+}
+
+#castDiv {
+	margin: 5px;
 }
 
 div #firstRow {
 	width: 100%;
-	/* white-space: pre-wrap; */
 	display: flex;
 }
 
@@ -84,6 +98,17 @@ div .rows {
 	flex-wrap: wrap;
 }
 
+h2 {
+	margin: 8px 0px 5px 8px;
+}
+
 .card {
 	margin: 5px;
+	/* background-color: blue; */
+}
+
+.card-body {
+	border-radius: 5px;
+	background-color: blue;
+	color: white;
 }

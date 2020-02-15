@@ -43,7 +43,7 @@ $(document).ready(function() {
 			method: 'GET'
 		}).then(function(res) {
 			// Console log response
-
+			let data = res;
 			console.log(res);
 
 			// Get temperature, humidity, wind speed, uv index info from response
@@ -53,10 +53,10 @@ $(document).ready(function() {
 			let temp = res.main.temp;
 			let hum = res.main.humidity;
 			let windSp = res.wind.speed;
-			// let uv = res.
-			let weatherIcon = 'https://openweathermap.org/img/wn/' + res.weather[0].icon + '.png';
+			let lat = res.coord.lat;
+			let lon = res.coord.lon;
 
-			// console.log(cityV, date, temp, hum, windSp, weatherIcon);
+			let weatherIcon = 'https://openweathermap.org/img/wn/' + res.weather[0].icon + '.png';
 
 			/* Dynamically input city, date, icon, temp, humidity, wind speed, 
 			and uv index into city div */
@@ -250,6 +250,4 @@ $(document).ready(function() {
 			}
 		});
 	});
-
-	// Color code uv index
 });
