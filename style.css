@@ -89,6 +89,15 @@ div .rows {
 	padding-right: 20px;
 }
 
+h6 {
+	font-size: 20px;
+}
+
+span {
+	color: white;
+	padding: 5px;
+	border-radius: 5px;
+}
 /* ================== */
 
 /* Main five day  */

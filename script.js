@@ -43,8 +43,8 @@ $(document).ready(function() {
 			method: 'GET'
 		}).then(function(res) {
 			// Console log response
-			let data = res;
-			console.log(res);
+
+			// console.log(res);
 
 			// Get temperature, humidity, wind speed, uv index info from response
 
@@ -79,7 +79,7 @@ $(document).ready(function() {
 			// var fourthRow = fourthDiv.append(windSpeed);
 
 			var fifthDiv = $('<div>').addClass('rows');
-			var uvIndex = $('<span><p></p></span>').text('UV Index: ' + 'object w/ temp');
+			var uvIndex = $('<h6>').text('UV Index: ');
 			// var fifthRow = fifthDiv.append(uvIndex);
 
 			var secondRow = secondDiv.append(tempDiv, humDiv, windSpeed, uvIndex);
@@ -87,17 +87,59 @@ $(document).ready(function() {
 			currentDiv.append(firstRow, secondRow);
 		});
 
+		// UV index call
+
+		$.ajax({
+			url: queryURL,
+			method: 'GET'
+		}).then(function(r) {
+			var lat = r.coord.lat;
+			var lon = r.coord.lon;
+
+			var queryURL2 =
+				'https://api.openweathermap.org/data/2.5/uvi?appid=' + apiKey + '&lat=' + lat + '&lon=' + lon;
+
+			$.ajax({
+				url: queryURL2,
+				method: 'GET'
+			}).then(function(r) {
+				var uvIndex = r.value;
+
+				if (uvIndex >= 0 && uvIndex < 3) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'green');
+					uDiv.append(uText);
+				} else if (uvIndex >= 3 && uvIndex < 6) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'yellow');
+					uDiv.append(uText);
+				} else if (uvIndex >= 6 && uvIndex < 8) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'orange');
+					uDiv.append(uText);
+				} else if (uvIndex >= 8 && uvIndex < 11) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'red');
+					uDiv.append(uText);
+				} else {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'purple');
+					uDiv.append(uText);
+				}
+			});
+		});
+
 		// 5-day call
-		var queryURL2 =
+		var queryURL3 =
 			'https://api.openweathermap.org/data/2.5/forecast?units=imperial&q=' + city + '&appid=' + apiKey;
 
 		$.ajax({
-			url: queryURL2,
+			url: queryURL3,
 			method: 'GET'
 		}).then(function(resp) {
 			// Console log response
 
-			console.log(resp);
+			// console.log(resp);
 
 			// create 5-day forecast card with date, weather condition icon, temp, humidity
 			for (i = 0; i < 5; i++) {
@@ -199,12 +241,54 @@ $(document).ready(function() {
 			// var fourthRow = fourthDiv.append(windSpeed);
 
 			var fifthDiv = $('<div>').addClass('rows');
-			var uvIndex = $('<span><p></p></span>').text('UV Index: ' + 'object w/ temp');
+			var uvIndex = $('<h6>').text('UV Index: ');
 			// var fifthRow = fifthDiv.append(uvIndex);
 
 			var secondRow = secondDiv.append(tempDiv, humDiv, windSpeed, uvIndex);
 
 			currentDiv.append(firstRow, secondRow);
+		});
+
+		// UV index call
+
+		$.ajax({
+			url: queryURL,
+			method: 'GET'
+		}).then(function(r) {
+			var lat = r.coord.lat;
+			var lon = r.coord.lon;
+
+			var queryURL2 =
+				'https://api.openweathermap.org/data/2.5/uvi?appid=' + apiKey + '&lat=' + lat + '&lon=' + lon;
+
+			$.ajax({
+				url: queryURL2,
+				method: 'GET'
+			}).then(function(r) {
+				var uvIndex = r.value;
+
+				if (uvIndex >= 0 && uvIndex < 3) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'green');
+					uDiv.append(uText);
+				} else if (uvIndex >= 3 && uvIndex < 6) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'yellow');
+					uDiv.append(uText);
+				} else if (uvIndex >= 6 && uvIndex < 8) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'orange');
+					uDiv.append(uText);
+				} else if (uvIndex >= 8 && uvIndex < 11) {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'red');
+					uDiv.append(uText);
+				} else {
+					let uDiv = $('#secondRow h6').text('UV Index: ');
+					let uText = $('<span>').text(uvIndex).css('backgroundColor', 'purple');
+					uDiv.append(uText);
+				}
+			});
 		});
 
 		// Create query URL with text value from global variable and imperial value
