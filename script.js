@@ -114,10 +114,6 @@ $(document).ready(function() {
 			url: queryURL3,
 			method: 'GET'
 		}).then(function(resp) {
-			// Console log response
-
-			// console.log(resp);
-
 			// create 5-day forecast card with date, weather condition icon, temp, humidity
 			for (i = 0; i < 5; i++) {
 				var iconFor = 'https://openweathermap.org/img/wn/' + resp.list[i].weather[0].icon + '.png';
@@ -146,26 +142,11 @@ $(document).ready(function() {
 		});
 	});
 
-	// Get text value from local storage
-	// addCity();
-
 	function addCity(searchValue) {
-		// searchDiv.empty();
-
 		var newLi = $('<li>');
 		newLi.addClass('pastSearch');
 		newLi.text(searchValue);
 		searchDiv.prepend(newLi);
-
-		// for (i = 0; i < localStorage.length; i++) {
-		// 	var cityValue = localStorage.getItem('city-' + i);
-		// 	var cityDiv = $('<div>');
-		// 	var cityP = $('<p>').attr('class', 'pastSearch').text(cityValue);
-		// 	cityDiv.prepend(cityP);
-		// 	// Prepend text value into div for past searches
-		// 	searchDiv.prepend(cityDiv);
-		// 	aside.append(searchDiv);
-		// }
 	}
 
 	// Create click events for past searches
