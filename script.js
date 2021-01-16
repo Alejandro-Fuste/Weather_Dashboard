@@ -169,7 +169,6 @@ $(document).ready(function() {
 		}).then(function(res) {
 			// Get city, date, and icon to represent current weather condition
 			let cityV = res.name;
-			let date = res.dt;
 
 			// Get temperature, humidity, wind speed, uv index info from response
 			let temp = res.main.temp;
