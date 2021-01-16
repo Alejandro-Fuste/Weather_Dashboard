@@ -50,15 +50,12 @@ $(document).ready(function() {
 			var secondDiv = $('<div>').attr('id', 'secondRow');
 			var tempDiv = $('<p>').text('Temperature: ' + temp + ' °F');
 
-			var thirdDiv = $('<div>').addClass('rows');
 			var humDiv = $('<p>').text('Humidity: ' + hum + ' %');
 			// var thirdRow = thirdDiv.append(humDiv);
 
-			var fourthDiv = $('<div>').addClass('rows');
 			var windSpeed = $('<p>').text('Wind Speed: ' + windSp + ' MPH');
 			// var fourthRow = fourthDiv.append(windSpeed);
 
-			var fifthDiv = $('<div>').addClass('rows');
 			var uvIndex = $('<h6>').text('UV Index: ');
 			// var fifthRow = fifthDiv.append(uvIndex);
 
