@@ -6,7 +6,9 @@
 
 ## Description 
 
-test
+The project creates a weather search application that allows a user to search for 
+the weather in a particular city in the United States. The app will work in the browser 
+and will dynamically generate its contents. The app uses <strong>HTML</strong>, <strong>CSS</strong>, <strong>Javascript</strong>, <strong>jQuery</strong>, <strong>Web API</strong>, <strong>Third-Party APIs</strong> and <strong>Server-Side APIs</strong>. Click on this [link](https://alejandro-fuste.github.io/Weather_Dashboard/) to view the deployed site.
 
 ## User Story
 
