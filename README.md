@@ -1,37 +1,70 @@
-# Weather_Dashboard
+# Weather Dashboard [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-Homework #6: Server-Side APIs: Weather Dashboard
 
-The purpose of this homework is to create a weather dashboard using the data from a another API.
+## Description 
 
-Requirements-
-
-1. Dashboard must have a form inputs 
-2. Able to search for the weather of a city 
-3. Able to see the current and future conditions for searched city 
-4. Able to see:
-<ol>
-  a. city name <br>
-  b. date <br>
-  c. icon for weather condition <br>
-  d. temperature <br>
-  e. humidity <br>
-  f. wind speed <br>
-  g. UV index <br>
-</ol>
-
- 5. Color to represent UV index
- 6. Able to view the 5-day forecast of city with the date, <br>
-   an icon representation of weather conditions, the temperature, <br>
-   and the humidity
- 7. Able to view the current and future conditions of city search history
-
+test
 
 ## User Story
-=============
 
-AS A traveler <br>
-I WANT to see the weather outlook for multiple cities <br>
-SO THAT I can plan a trip accordingly <br>
+```
 
-=============
+AS A traveler
+
+I WANT to see the weather outlook for multiple cities
+
+SO THAT I can plan a trip accordingly
+
+```
+
+## Table of Contents
+
+* [Installation](#installation)
+
+* [Usage](#usage)
+
+* [License](#license)
+
+* [Contributing](#contributing)
+
+* [Tests](#tests)
+
+* [Questions](#questions)
+
+## Installation
+
+To install necessary dependencies, run the following command:
+
+```
+
+npm i
+
+```
+
+## Usage
+
+This app uses HTML, CSS, Javascript, Third-Party API, Web API, and Server-Side APIs.
+
+## License
+
+This project is licensed under the MIT license.
+
+## Contributing
+
+Contributions are welcome. 
+
+## Tests 
+
+To run tests, run the following command:
+
+```
+
+npm test
+
+```
+
+## Questions
+
+<img src="https://avatars2.githubusercontent.com/u/48495840?v=4" alt="avatar" style="border-radius: 16px" width="60"/>
+
+If you have any questions about the repo, open an issue or contact [Alejandro Fuste](https://github.com/Alejandro-Fuste) directly through GitHub.
