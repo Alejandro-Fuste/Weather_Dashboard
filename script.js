@@ -28,10 +28,6 @@ $(document).ready(function() {
 			url: queryURL,
 			method: 'GET'
 		}).then(function(res) {
-			// Console log response
-
-			// console.log(res);
-
 			// Get temperature, humidity, wind speed, uv index info from response
 
 			let cityV = res.name;
@@ -39,8 +35,6 @@ $(document).ready(function() {
 			let temp = res.main.temp;
 			let hum = res.main.humidity;
 			let windSp = res.wind.speed;
-			let lat = res.coord.lat;
-			let lon = res.coord.lon;
 
 			let weatherIcon = 'https://openweathermap.org/img/wn/' + res.weather[0].icon + '.png';
 
