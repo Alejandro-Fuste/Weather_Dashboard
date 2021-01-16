@@ -137,7 +137,6 @@ $(document).ready(function() {
 				card.append(cardBody);
 
 				fiveDayDiv.append(card);
-				// console.log(dateFor, iconFor, tempFor, humFor);
 			}
 		});
 	});
@@ -168,10 +167,6 @@ $(document).ready(function() {
 			url: queryURL,
 			method: 'GET'
 		}).then(function(res) {
-			// Console log response
-
-			console.log(res);
-
 			// Get city, date, and icon to represent current weather condition
 			let cityV = res.name;
 			let date = res.dt;
@@ -265,10 +260,6 @@ $(document).ready(function() {
 			url: queryURL,
 			method: 'GET'
 		}).then(function(resp) {
-			// Console log response
-
-			console.log(resp);
-
 			// create 5-day forecast card with date, weather condition icon, temp, humidity
 			for (i = 0; i < 5; i++) {
 				var iconFor = 'https://openweathermap.org/img/wn/' + resp.list[i].weather[0].icon + '.png';
@@ -293,7 +284,6 @@ $(document).ready(function() {
 				card.append(cardBody);
 
 				fiveDayDiv.append(card);
-				// console.log(dateFor, iconFor, tempFor, humFor);
 			}
 		});
 	});
