@@ -35,6 +35,10 @@ form {
 	padding: 10px 0px 10px 10px;
 }
 
+#searches {
+	list-style-type: none;
+}
+
 .pastSearch {
 	border-radius: 5px;
 	border: 1px solid rgb(238, 233, 233);
