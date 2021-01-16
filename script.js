@@ -172,11 +172,12 @@ $(document).ready(function() {
 	// Get text value from local storage
 	addCity();
 
-	function addCity() {
+	function addCity(searchValue) {
 		searchDiv.empty();
 
 		var newLi = $('<li>');
 		newLi.addClass('pastSearch');
+		newLi.text(searchValue);
 
 		// for (i = 0; i < localStorage.length; i++) {
 		// 	var cityValue = localStorage.getItem('city-' + i);
