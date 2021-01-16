@@ -175,15 +175,18 @@ $(document).ready(function() {
 	function addCity() {
 		searchDiv.empty();
 
-		for (i = 0; i < localStorage.length; i++) {
-			var cityValue = localStorage.getItem('city-' + i);
-			var cityDiv = $('<div>');
-			var cityP = $('<p>').attr('class', 'pastSearch').text(cityValue);
-			cityDiv.prepend(cityP);
-			// Prepend text value into div for past searches
-			searchDiv.prepend(cityDiv);
-			aside.append(searchDiv);
-		}
+		var newLi = $('<li>');
+		newLi.addClass('pastSearch');
+
+		// for (i = 0; i < localStorage.length; i++) {
+		// 	var cityValue = localStorage.getItem('city-' + i);
+		// 	var cityDiv = $('<div>');
+		// 	var cityP = $('<p>').attr('class', 'pastSearch').text(cityValue);
+		// 	cityDiv.prepend(cityP);
+		// 	// Prepend text value into div for past searches
+		// 	searchDiv.prepend(cityDiv);
+		// 	aside.append(searchDiv);
+		// }
 	}
 
 	// Create click events for past searches
