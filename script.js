@@ -1,10 +1,7 @@
 $(document).ready(function() {
 	var city = '';
-	var key = '';
-	var counter = -1;
 	var apiKey = '476789b4ea7a5f8db7a7b4f6f0c734fb';
 	var searchDiv = $('#searches');
-	var aside = $('.col-sm-4');
 	var currentDiv = $('#weatherDiv');
 	var fiveDayDiv = $('#forecastDiv');
 	let currentDate = moment().format('l');
@@ -16,21 +13,10 @@ $(document).ready(function() {
 		currentDiv.empty();
 		fiveDayDiv.empty();
 
-		// Increase counter with every click
-		counter++;
-
 		// Get text value from input field and store in global variable
-
 		city = $('#input').val().trim();
 
-		// Create key for local storage -- use counter as part of key
-
-		key = 'city-' + counter;
-
-		// Store text value in local storage
-
-		localStorage.setItem(key, city);
-
+		// Call the addCity function with city as a parameter to create the past searches
 		addCity(city);
 
 		// Put city variable in queryURL and send ajax request
