@@ -31,7 +31,7 @@ $(document).ready(function() {
 
 		localStorage.setItem(key, city);
 
-		addCity();
+		addCity(city);
 
 		// Put city variable in queryURL and send ajax request
 
@@ -170,14 +170,15 @@ $(document).ready(function() {
 	});
 
 	// Get text value from local storage
-	addCity();
+	// addCity();
 
 	function addCity(searchValue) {
-		searchDiv.empty();
+		// searchDiv.empty();
 
 		var newLi = $('<li>');
 		newLi.addClass('pastSearch');
 		newLi.text(searchValue);
+		searchDiv.prepend(newLi);
 
 		// for (i = 0; i < localStorage.length; i++) {
 		// 	var cityValue = localStorage.getItem('city-' + i);
